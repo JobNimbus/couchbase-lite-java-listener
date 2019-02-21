@@ -1,3 +1,12 @@
+## JobNimbus Installation Notes
+
+In order to build this project locally, you need to run the following commands to install the git submodule:
+
+```
+git submodule init
+git submodule update --remote
+```
+
 ## couchbase-lite-java-listener
 
 This provides a webserver wrapper around Couchbase-Lite so that it can be called via HTTP REST calls.

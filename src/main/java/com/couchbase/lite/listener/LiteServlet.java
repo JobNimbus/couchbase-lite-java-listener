@@ -53,6 +53,16 @@ public class LiteServlet extends HttpServlet {
     public void service(HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Handle OPTIONS Request in order to respond to CORS
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+        response.setHeader("Access-Control-Allow-Headers", "content-type, accept");
+        if("OPTIONS".equals(request.getMethod())){
+            Log.v(Log.TAG_LISTENER, "Handle OPTIONS Request in order to respond to CORS");
+            response.setStatus(200);
+            return;
+        }
+
         if (request != null)
             Log.i(Log.TAG_LISTENER, "[REQUEST] (%s) %s: %s",
                     Thread.currentThread().getName(),
